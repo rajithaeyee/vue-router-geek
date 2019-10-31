@@ -15,7 +15,9 @@
     <button @click="selectPostHandler('1')">Post 1</button>
     <button @click="selectPostHandler('2')">Post 2</button>
     <button @click="selectPostHandler('3')">Post 3</button>
+     <transition name="fade" mode="out-in">
     <router-view></router-view>
+     </transition>
   </div>
 </template>
 
@@ -45,13 +47,13 @@ export default class App extends Vue {
       padding-left: 2vh;
     }
   }
-
-  .fade-enter-active,
-  .fade-leave-active {
-    transition: opacity 0.5s;
-  }
-  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-    opacity: 0;
-  }
+}
+.fade-enter-active,
+.fade-leave-active{
+ transition: opacity .5s
+}
+.fade-enter,
+.fade-leave-to{
+      opacity: 0
 }
 </style>
