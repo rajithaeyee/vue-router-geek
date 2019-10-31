@@ -19,7 +19,8 @@ const routes = [
   {
     path: '/user',
     name: 'user',
-    component: () => import('../views/User.vue')
+    component: () => import('../views/User.vue'),
+    meta: { showAlert: true }
   },
   {
     path: '/post/:id',
@@ -32,6 +33,15 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
-})
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.showAlert)) {
+    window.alert("Hello");
+    next();
+  } else {
+    next();
+  }
+});
 
 export default router
