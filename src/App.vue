@@ -10,6 +10,8 @@
 </li>
 </ul>
 </nav> 
+<br/>
+<button @click="selectUserHandler">User</button>
 <router-view></router-view>
 </div>
 </template>
@@ -21,7 +23,12 @@ import { Component, Vue } from 'vue-property-decorator';
   components: {
   }
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+    selectUserHandler(){
+    const id = Math.floor(Math.random() * 10);
+    this.$router.push({ path: 'user', query: { id: id.toString() }})
+  }
+}
 </script>
 
 <style lang="scss">
